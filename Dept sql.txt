@@ -1,0 +1,41 @@
+can use this 
+
+SELECT DISTINCT Description, WorkCentre, ItemId
+FROM            QuotationItemDetail
+WHERE        (QuotationItemId IN (421681, 421683)) AND (PartType = 2)
+ORDER BY ItemId
+
+
+Standard Artwork	Pre-press\Artwork	1
+Digital Print		Printing\FabriVu 520	4
+Dye-sub/Laminating	Heat Press\Heat Press	5
+Laser Cutting		Cutting\Laser Cutter	6
+Finishing Labour	Finishing\Sewing	8
+Packing			Dispatch\Packing	10
+
+or this
+
+SELECT DISTINCT JobId, WorkCentre, JobRef, OPNumber, OPId, WorkCentreId, GroupName
+FROM            vwProdGantt
+WHERE        (JobId = 133211)
+ORDER BY OPNumber
+
+
+133211	Artwork		REF134568	1	862582	14	Pre-press
+133211	FabriVu 520	REF134568	2	862583	35	Printing
+133211	Heat Press	REF134568	3	862584	26	Heat Press
+133211	Laser Cutter	REF134568	4	862585	9	Cutting
+133211	Sewing		REF134568	5	862586	16	Finishing
+133211	Packing		REF134568	6	862587	25	Dispatch
+
+vwProdGantt gives better for group name & Workcentre, but gets everything basd on job id
+
+but items will only get ops for those selected rather than all
+
+also will have to manually add Sales/CS
+
+
+but if job has different printers gets multipl rows on both
+
+will have to do a loop & array
+

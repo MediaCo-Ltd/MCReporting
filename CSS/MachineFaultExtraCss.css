@@ -1,0 +1,136 @@
+/*main styles some things are different than normal*/
+
+.styleTHstd
+{
+color: #0069AA;
+text-align: center;
+border-style: solid solid solid none; 
+border-width: 1px;
+border-color: Black;
+}
+
+.styleTHleftRL
+{
+height: 20px;
+color: #0069AA;
+text-align: center;
+border-style: solid solid solid solid; 
+border-width: 1px;
+border-color: Black;
+}
+
+/* THIS not the Same as in other web sites */
+/* height is 20 on std                            */
+.styleTHleft
+{
+height: 40px;
+color: #0069AA;
+text-align: center;
+border-style: solid solid solid solid; 
+border-width: 1px;
+border-color: Black;
+}
+
+.styleTHBWstd
+{
+height: 30px;
+color: Black;
+text-align: center;
+border-style: solid solid solid none; 
+border-width: 1px; 
+border-color: Black;  
+}
+
+.styleTHBWleft
+{
+height: 30px;
+color: Black;
+text-align: center;
+border-style: solid solid solid solid; 
+border-width: 1px; 
+border-color: Black;  
+}
+
+.styleTDstd
+{
+color: Black;
+height: 20px;    
+text-align: center;
+border-style: none solid solid none; 
+border-width: 1px;
+border-color: Black;
+}
+
+.styleTDBWstd
+{
+height: 20px;
+color: Black;
+text-align: center;
+border-style: none solid solid none; 
+border-width: 1px;
+border-color: Black;    
+}
+
+.styleTDleft
+{
+height: 20px;
+color: #0069AA;
+text-align: center;
+border-style: none solid solid solid; 
+border-width: 1px;
+border-color: Black;
+}
+
+.styleTDBWleft
+{
+height: 20px;
+color: Black;
+text-align: center;
+border-style: none solid solid solid; 
+border-width: 1px; 
+border-color: Black;  
+}
+
+.styleTDcoststd
+{
+color: Black;
+height: 20px;    
+text-align: center;
+border-style: solid solid solid none; 
+border-width: 1px;
+border-color: Black;
+}
+
+.styleTDCostleft
+{
+height: 20px;
+color: Black;
+text-align: center;
+border-style: solid solid solid solid; 
+border-width: 1px;
+border-color: Black;
+}
+/*.styleSD3
+{
+width: 1px;
+}*/
+
+/* Also used by some description data */
+.styleTDmaterial
+{
+color: Black;
+height: 20px;    
+text-align:left;
+padding-left: 2px;
+border-style: none solid solid none; 
+border-width: 1px;
+border-color: Black;
+}
+
+.styleTDopnotes
+{
+border-style: solid solid none solid; 
+border-width: 1px; 
+border-color: black; 
+color: #0069AA;
+}

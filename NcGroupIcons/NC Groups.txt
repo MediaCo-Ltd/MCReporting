@@ -1,0 +1,44 @@
+Clarity Groups
+
+Group   Desc
+
+4	Pre-press
+2	Printing
+7	Heat Press
+12	Liquid Lam
+3	Cutting
+5	Finishing
+11	Build
+6	Dispatch
+9	Delivery
+10	Installation
+
+added groups
+
+100     Sales - CS
+101	Stock
+102	Other
+
+change to nvar ? at least work out what lengths to have MAX is wrong for most
+
+this works
+so when building up a view can do like as numbers will be in order
+3,6,100 & so on
+SELECT        Id, JobId, JobTypeId, GroupIds, GroupSelection, DeptIds, DeptSelected, QuoteItemID, QuoteItemsAlpha
+FROM            Logs
+WHERE        (GroupIds LIKE '%3,4%')
+
+or may need to do GroupIds LIKE '%3' or GroupIds LIKE '%4%'
+this works
+SELECT        Id, JobId, JobTypeId, GroupIds, GroupSelection, DeptIds, DeptSelected, QuoteItemID, QuoteItemsAlpha
+FROM            Logs
+WHERE        (GroupIds LIKE '%3%') OR
+                         (GroupIds LIKE '%100%') OR
+                         (GroupIds LIKE '%4%')
+
+will have to use selected becuase %3% will get 3, 13, 23 and so on So WHERE (GroupSelection LIKE '%03,13%') 
+so may not use the numeric Id ones at all
+
+may also need the shift times bit
+
+

@@ -1,0 +1,164 @@
+
+/* Not sure if anything in this is used */
+
+.BodyDataPages
+{
+    padding-right: 20px;
+    padding-left: 20px;
+    border: 0px
+}
+.NonDataTables
+{
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 0px;
+    margin: 0px;
+    padding-top: 0px;
+    background-color: white;
+    border: 0px;
+}
+
+select.filelist
+{
+    margin: 0px;
+    width: 450px
+}
+table.docbody
+{
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    margin: 0px;
+    padding-top: 0px;
+    background-color: white
+}
+body
+{
+    border-right: 0px;
+    padding-right: 20px;
+    border-top: 0px;
+    padding-left: 20px;
+    padding-bottom: 0px;
+    margin: 0px;
+    border-left:0px;
+    padding-top: 0px;
+    border-bottom: 0px;
+    
+    
+    background-color: white;
+    font-family:  'verdana', 'arial', 'geneva',  'lucida', 'san-serif', 'lucida sans', 'lucida console', 'ms sans serif';
+    font-size: 69%;
+	font-style: normal;
+	
+	font-weight: normal;
+	font-variant:  normal;
+	text-transform:  none;
+	text-decoration:  none;
+}
+
+td.footer
+{
+    border-top: medium none;
+    font-size: 80%;
+    margin: 0%;
+    text-align: center
+}
+#leftcontent
+{
+    border-top: #2d4291 thin;
+    margin-top: 3px;
+    float: left;
+    background-image: none;
+    margin-bottom: 3px;
+    width: 15%;
+    color: #eeeeee;
+    border-bottom: #2d4291 thin;
+    background-repeat: repeat;
+    background-color: #2d4291
+}
+td.standardtext
+{
+    padding-right: 15px;
+    padding-left: 40px;
+    padding-bottom: 30px;
+    margin: 0px;
+    width: 100%;
+    padding-top: 10px
+}
+td.Pwlabel
+{
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    margin: 0px;
+    vertical-align: middle;
+    padding-top: 5px;
+    text-align: left;
+    color: #0069AA;
+    font-size:medium;
+}
+
+td.inputlabel
+{
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    margin: 0px;
+    vertical-align: middle;
+    padding-top: 5px;
+    text-align: right;
+    color: #0069AA;
+}
+
+
+input.inlinebuttons
+{
+    border-right: #5e5e5e 3px solid;
+    border-top: #5e5e5e 3px solid;
+    font-weight: bold;
+    margin: 2px 10px;
+    vertical-align: middle;
+    border-left: #5e5e5e 3px solid;
+    border-bottom: #5e5e5e 3px solid;
+    background-color: #bcb772;
+    text-align: center
+}
+td.inputboxes
+{
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 2px;
+    margin: 0px;
+    padding-top: 2px
+}
+#rightcontent
+{
+    color: #eeeeee;
+    background-color: #2d4291
+}
+
+.tdinputtxt
+{
+    width: 280px;
+    height: 25px;    
+}
+
+td.supplierlabel
+{
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    vertical-align: bottom;
+    color: #0069AA; /*NewBlue*/
+}
+
+td.supplierinput
+{
+    padding-top: 0px;
+    padding-left: 10px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    vertical-align: top;
+}
+

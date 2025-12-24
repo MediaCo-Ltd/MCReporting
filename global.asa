@@ -1,0 +1,153 @@
+<script language="vbscript" runat="server"> 
+ 
+Sub Application_OnStart
+
+    '## Cursor
+    Application("adOpenForwardOnly") = 0
+    Application("adOpenStatic") = 3
+    
+    '## Location
+    Application("adUseServer") = 2
+    Application("adUseClient") = 3
+
+    '## Lock type    
+    Application("adLockReadOnly") = 1
+    Application("adLockOptimistic") = 3
+        
+    '## adOpenForwardOnly = 0, adOpenKeyset = 1, adOpenDynamic = 2, adOpenStatic = 3
+    '## adLockReadOnly = 1, adLockPessimistic = 2, adLockOptimistic = 3, adLockBatchOptimistic = 4    
+       
+    dim fso
+    dim txtfile 
+    Set fso = Server.CreateObject("Scripting.FileSystemObject")    
+    Set txtfile = fso.OpenTextFile("C:\Web Sites\MC Reporting\Logs\Application log.txt" , 8, True)
+    
+    txtfile.write "Application Started " & Now() & vbCrLf
+	txtfile.close
+    Set txtfile = nothing
+    Set fso = nothing
+    
+End Sub
+
+Sub Application_OnEnd
+
+    On Error Resume Next
+        
+    dim fso
+    dim txtfile 
+    Set fso = Server.CreateObject("Scripting.FileSystemObject")    
+    Set txtfile = fso.OpenTextFile("C:\Web Sites\MC Reporting\Logs\Application log.txt" , 8, True)
+    txtfile.write "Application Ended " & Now() & vbCrLf
+	txtfile.close
+    Set txtfile = nothing
+    Set fso = nothing
+    
+    '## Clear out all database locks
+      
+    Dim DelLockSql
+    Dim DelLockRs
+
+    Set DelLockRs = Server.CreateObject("ADODB.Recordset")
+    DelLockRs.ActiveConnection = Application("ConnMcLogon") 
+    DelLockRs.Source = "Delete From RecordLocks"
+    DelLockRs.CursorType = Application("adOpenStatic")
+    DelLockRs.CursorLocation = Application("adUseClient")
+    DelLockRs.LockType = Application("adLockOptimistic")
+    DelLockRs.Open
+    
+    DelLockRs.Close
+    Set DelLockRs = Nothing    
+    
+    Err.Clear
+
+End Sub
+
+Sub Session_OnStart
+
+    Dim LogDate 
+    LogDate = Replace(Date,"/","-",1,-1,1)
+    
+    Session("LogFile") = "C:\Web Sites\MC Reporting\Logs\Session log " & LogDate & ".txt"  
+  	
+	Session.Timeout = 20
+	Server.ScriptTimeout = 480 '240
+		    
+    '########################### Rem next line for live #################### 
+    ' Session.Timeout = 2
+			
+End Sub
+
+Sub Session_OnEnd
+
+    On Error Resume Next 
+    
+    Dim Count    
+    
+    If Session("UserId") = "" Then
+        '## Do nothing its only the logon page    
+    Else
+        
+        If Application("UsersOnLine") > 0 Then
+             Application("UsersOnLine") = Application("UsersOnLine") -1
+        End If   
+      
+        For Count = 1 to Session("UserCount")
+            If Session("UserId") = Cint(Count) Then Application("UsersOnLineName" & Cstr(Count)) = ""
+        Next
+        
+        dim fso
+        dim txtfile 
+        Set fso = Server.CreateObject("Scripting.FileSystemObject")    
+        Set txtfile = fso.OpenTextFile(Session("LogFile") , 8, True)
+        
+        '## Write to log with session end & locked data        
+        If Session("LockedId") <> "" Then
+            'Dim LocalData
+            'LocalData = Application("LockedId")
+            'LocalData = Replace(LocalData,"#" & Session("LockedId"),"",1,-1,1)
+            'Application("LockedId") = LocalData   
+            'txtfile.write "Session " & Session("Session_Id") & " ended. " & Session("UserName") & " Web Lock on record " & Session("LockedId") & " was removed " & Now() & vbCrLf
+        Else
+            If Session("LoggedOff") = True Then
+                txtfile.write "Session " & Session("Session_Id") & " ended. " & Session("UserName") & " logged off " & Now() & vbCrLf
+            Else
+                txtfile.write "Session " & Session("Session_Id") & " ended. " & Session("UserName") & " did not log off " & Now() & vbCrLf
+            End If
+        End If
+        
+        txtfile.close
+        Set txtfile = nothing
+        
+        Dim DeletePath
+        DeletePath = Session("DeleteFolder")
+        If DeletePath <> "" Then
+            If fso.FolderExists(DeletePath) = True Then Fso.DeleteFolder(DeletePath),True
+        End If
+        
+        Set fso = nothing 
+        
+        '## Clear out database locks, only if set by session user
+        Dim ExtLockSql
+        Dim ExtLockRs
+
+        Set ExtLockRs = Server.CreateObject("ADODB.Recordset")
+        ExtLockRs.ActiveConnection = Application("ConnMcLogon") 
+        ExtLockRs.Source = "Delete From RecordLocks Where (LockedById = " & Session("UserId") & ")"
+        'ExtLockRs.Source = ExtLockRs.Source & " Where (LockedById = " & Session("UserId") & ")"
+        ExtLockRs.CursorType = Application("adOpenStatic")
+        ExtLockRs.CursorLocation = Application("adUseClient")
+        ExtLockRs.LockType = Application("adLockOptimistic")
+        ExtLockRs.Open
+                
+        ExtLockRs.Close
+        Set ExtLockRs = Nothing
+    End If
+    
+    
+    
+    
+    Err.Clear      
+    
+End Sub
+ 
+</script>

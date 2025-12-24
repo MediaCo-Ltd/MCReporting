@@ -81,7 +81,7 @@ Dim UserIpAddress
 Dim Url
 UserIpAddress = Request.ServerVariables("REMOTE_ADDR")
 If Left(UserIpAddress,10) = "192.168.20" Then
-    Url = "http://192.168.20.32"
+    Url = "http://192.168.20.3"
 Else
     Url = "http://http://82.71.163.186"
 End If

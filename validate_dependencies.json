@@ -1,0 +1,75 @@
+{
+  "application": "MCReporting",
+  "description": "ASP Classic web application for reporting",
+  "checks": {
+    "network": [
+      {
+        "type": "ping",
+        "target": "192.168.20.3",
+        "description": "New Clarity server IP"
+      },
+      {
+        "type": "port",
+        "target": "192.168.20.3",
+        "port": 80,
+        "description": "HTTP on Clarity server"
+      },
+      {
+        "type": "port",
+        "target": "192.168.20.3",
+        "port": 1433,
+        "description": "SQL Server on Clarity server"
+      }
+    ],
+    "com_objects": [
+      {
+        "progid": "JMail.Message",
+        "description": "Email sending component"
+      },
+      {
+        "progid": "ADODB.Recordset",
+        "description": "Database access"
+      },
+      {
+        "progid": "ADODB.Stream",
+        "description": "Binary stream handling"
+      },
+      {
+        "progid": "Scripting.FileSystemObject",
+        "description": "File system operations"
+      },
+      {
+        "progid": "Scripting.Dictionary",
+        "description": "Dictionary object for uploads"
+      }
+    ],
+    "folders": [
+      {
+        "path": "C:\\Web Sites\\MC Reporting",
+        "description": "Application root folder"
+      },
+      {
+        "path": "C:\\Web Sites\\MC Reporting\\Logs",
+        "description": "Application log folder"
+      }
+    ],
+    "iis": [
+      {
+        "type": "application_pool",
+        "name": "MCReporting",
+        "description": "Application pool for MC Reporting"
+      },
+      {
+        "type": "website",
+        "name": "MCReporting",
+        "description": "IIS website configuration"
+      }
+    ],
+    "smtp": [
+      {
+        "host": "mx496502.smtp-engine.com",
+        "description": "External SMTP relay"
+      }
+    ]
+  }
+}
